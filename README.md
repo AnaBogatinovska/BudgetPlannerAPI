@@ -1,3 +1,10 @@
-# Budget Planner v3 - backend
+# BudgetPlannerAPI
 
-Budget Planner v3 backend solution using typescript in Node js, MySQL database.
+Backend application for keeping track of personal finance and expenses.
+It is developed for learning purposes.
+Backend: 
+  - NodeJS
+  - Typescript
+  - Express.js
+  - MySQL database
+  - Nodemon.js
