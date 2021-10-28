@@ -1,8 +1,0 @@
-export interface MonthPlan {
-    id: number;
-    userMonthPlanId: number;
-    day: number;
-    name: string;
-    amount: number;
-    categoryId: number;
-}
