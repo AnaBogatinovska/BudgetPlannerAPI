@@ -1,5 +1,9 @@
 {
   "env": {
-    "PORT": 3001
+    "PORT": 3001,
+    "DB_HOST": "localhost",
+    "DB_USER": "root",
+    "DB_PASSWORD": "*HU&N*MIj7hasq",
+    "DB_DATABASE": "budget_planner_db"
   }
 }

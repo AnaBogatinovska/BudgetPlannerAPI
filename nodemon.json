@@ -1,2 +1,8 @@
 {
+  "env": {
+    "DB_HOST": "localhost",
+    "DB_USER": "root",
+    "DB_PASSWORD": "Badgirl2802!",
+    "DB_DATABASE": "budget_planner_db"    
+  }
 }
