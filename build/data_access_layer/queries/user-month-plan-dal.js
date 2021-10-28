@@ -1,0 +1,50 @@
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const db_config_1 = __importDefault(require("../db-config"));
+class UserMonthPlanDAL {
+    // get month plan by userId
+    getUserMonthPlan(userId, year, month) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const query = `select id, year, month, ifnull(income, 0) as income, ifnull(budget, 0) as budget
+                                from user_month_plan
+                                where userId = ${userId}
+                                and year = ${year} 
+                                and month = ${month};`;
+            const result = yield db_config_1.default.query(query);
+            if (result.length === 1) {
+                return result[0];
+            }
+            else {
+                return null;
+            }
+        });
+    }
+    // create month plan by userId
+    createUserMonthPlan(mp) {
+        const query = `insert into user_month_plan(userId, year, month, income, budget)
+        values(${mp.userId},${mp.year},${mp.month},${mp.income},${mp.budget});`;
+        return db_config_1.default.query(query);
+    }
+    // update month plan by userId
+    updateUserMonthPlan(mp) {
+        const query = `update user_month_plan
+      set income = ${mp.income}, budget = ${mp.budget}
+      where userId = ${mp.userId}
+      and year = ${mp.year}
+      and month = ${mp.month};`;
+        return db_config_1.default.query(query);
+    }
+}
+exports.default = new UserMonthPlanDAL();
