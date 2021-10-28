@@ -2,10 +2,10 @@ import mysql, { Connection } from "mysql";
 import util from "util";
 
 const dbConfig: object = {
-  host: "localhost",
-  user: "root",
-  password: "Badgirl2802!",
-  database: "budget_planner_db",
+  host: process.env.DB_HOST,
+  user:  process.env.DB_USER ,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
 };
 
 const dbConnection = (config: object): any => {
